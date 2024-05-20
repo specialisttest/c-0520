@@ -1,0 +1,10 @@
+	 "x" = 13181840
+	 "x" = 14
+	 "x" = 5
+y = 0.002500
+Hello World !
+Привет ужасный мир!
+sizeof int = 4
+sizeof double = 8
+sizeof long long int = 8
+sizeof long double = 16
