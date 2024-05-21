@@ -1,4 +1,6 @@
 #define __STDC_LIB_EXT1__ 1
+#define __STDC_WANT_LIB_EXT1__ 1
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <locale.h>
@@ -25,6 +27,7 @@ int main(int argc, char *argv[]) {
 	
 	char z = 'A';*/
 	
+//#undef ABC
 	int a = ABC, b = 10;
 	
 	int q = 10;
