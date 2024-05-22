@@ -72,7 +72,7 @@ abc:
 		case -1:
 		case 1 : 
 			puts("один");
-			break;
+			break; // return
 		case 1*j : 
 			puts("два");
 			break;
@@ -84,19 +84,5 @@ abc:
 			
 	}
 
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-		
-	
-	
-	
 	return 0;
 }
