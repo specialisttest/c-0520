@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <stdbool.h>
 
 int compare_int(const void* a, const void* b){
 	int arg1 = *(const int*)a;
@@ -119,8 +120,62 @@ int main(int argc, char *argv[]) {
 	printf("Mediana: %2.f\n", mediana);
 	
 	
+	// бинарный поиск (в отсортированном массиве)
+	// O(log2(n))
+	search = 10;
+	found_index = -1;
 	
+	qsort(n, NSIZE, sizeof(int), compare_int);
+	int begin = 0, end = NSIZE - 1;
+	while ( end - begin > 1 ){
+		int middle_index = (begin + end) / 2;
+		int k = n[middle_index];
+		if (k == search) {
+			found_index = middle_index;
+			break;
+		}
+		if (k > search)
+			end = middle_index;
+		else // k < search
+			begin = middle_index;
+			
+		if (end - begin <= 1) {
+			if (n[begin] == search) {
+				found_index = begin;
+				break;
+			}
+			if (n[end] == search) {
+				found_index = end;
+				break;
+			}
+		}
+	}
 	
+	if (found_index == -1)
+		printf("Value %d not found in array\n", search);
+	else
+		printf("Value %d found in %d position\n", search, found_index);
+		
+	// Написать программу, которая определяет, сколько различных чисел находится в массиве.
+	#define SIZE 15
+	int numbers[SIZE]  = {18, 15, 17, 3, 21, 1000, 18, 30, 15, 17, 1000, 21, 18, 34, 12};
+	int counter = 0;
+	for (int i = 0; i < SIZE; i++) {
+		bool found = false;
+		int k = numbers[i];
+		for (int j = 0; j < i; j++)
+			if ( k == numbers[j]) {
+				found = true;
+				break;
+			}
+		if (!found) counter++;
+	}
+	
+	for(int i=0; i < SIZE; i++) printf("%-5d", numbers[i]);
+	puts("");
+	printf("Unique count: %d\n", counter);
+	
+		
 	// VLA (since C11) - only local arrays
 	/*printf("Enter array size for ints: ");
 	const int arr_size;
@@ -134,6 +189,22 @@ int main(int argc, char *argv[]) {
 	for(int i = 0; i < arr_size; i++)
 		printf("%-5d", arr[i]);
 	puts("");*/
+	
+	// Многомерные массивы
+	#define ROWS 2
+	#define COLS 3
+	int m[ROWS][COLS] = 
+	{
+		{1,2,3},
+		{4,5,6}
+	};
+	
+	for(int i = 0; i < ROWS; i++) {
+		for(int j = 0; j < COLS; j++)
+			printf("%-3d", m[i][j]);
+			
+		puts("");
+	}
 	
 	
 	
